@@ -343,7 +343,7 @@ def get_genre_from_ids(ids, genres):
 function that calculates the recall at k
 '''
 def calculate_recall_at_k(query_genre, retrieved_genres, dataset_genres, k):
-    query_genres = set(eval(query_genre[0][1]))
+    query_genres = set(eval(query_genre[1]))
     
     top_k_retrieved_genres = retrieved_genres[:k]
 
@@ -353,7 +353,7 @@ def calculate_recall_at_k(query_genre, retrieved_genres, dataset_genres, k):
         if any(genre in genres for genre in query_genres):
             relevant_retrieved_songs += 1
     
-    query_genres = set(eval(query_genre[0][1]))
+    
     relevant_songs_dataset = 0
     for song_id, genres_str in dataset_genres:
         genres = set(eval(genres_str))
@@ -367,7 +367,7 @@ function to calculate precision @k
 '''
 
 def calculate_precision_at_k(query_genre, retrieved_genres, k):
-    query_genres = set(eval(query_genre[0][1]))
+    query_genres = set(eval(query_genre[1]))
 
     top_k_retrieved_genres = retrieved_genres[:k]
 
